@@ -11,7 +11,7 @@ import AdminLeft from '../Layouts/AdminLeft'
 import { UserContext } from "../../UserContext"
 
 export default function AdminServiceList({ onSendEditData }) {
-    const { user, serverURL } = useContext(UserContext)
+    const { serverURL } = useContext(UserContext)
     const [services, setServices] = useState([])
 
     const [error, setError] = useState("")
@@ -41,7 +41,7 @@ export default function AdminServiceList({ onSendEditData }) {
         <>
             {error && <h1>{error}</h1>}
             <Container fluid className='p-0 m-0 common-back'>
-                {user && <Header title="Service List" username={user.name} />}
+            <Header title="Service List"/>
 
                 <Row className="me-0">
                     <Col lg={3} md={12}>

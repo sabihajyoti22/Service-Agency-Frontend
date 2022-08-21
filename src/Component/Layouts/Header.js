@@ -16,6 +16,7 @@ export default function Header({ title, username }) {
           <div className='d-flex col-lg-6'>
             <Link to="/" style={{color: "white"}}>
               <ImHome className='fs-2 mx-3' />
+              <p className='ms-2'>Home</p>
             </Link>
             <h3 className='col-lg-6'>{title}</h3>
           </div>

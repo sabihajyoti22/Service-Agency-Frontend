@@ -7,14 +7,12 @@ import { MdOutlineDoubleArrow } from 'react-icons/md';
 import { UserContext } from "../UserContext"
 
 export default function Services() {
-    const { user, serverURL } = useContext(UserContext)
-    console.log(user)
-    
+    const { user } = useContext(UserContext)    
     return (
         <>
             <Row>
                 <Col lg={3} md={3} sm={3} xs={3} className='text-center'>
-                    <a href={user ? "/order" : serverURL + "/auth/google/callback"} onClick={()=>{window.sessionStorage.setItem("service","Web Development")}}>
+                    <a href={user ? "/order" : "/login"} onClick={()=>{window.sessionStorage.setItem("service","Web Development")}}>
                         <Card className='p-2 header-card mb-3'>
                             <Card.Body>
                                 <SiWeb3Dotjs className='icons' />
@@ -26,7 +24,7 @@ export default function Services() {
                     </a>
                 </Col>
                 <Col lg={3} md={3} sm={3} xs={3} className='text-center'>
-                    <a href={user ? "/order" : serverURL + "/auth/google/callback"} onClick={()=>{window.sessionStorage.setItem("service","Web and Mobile Design")}}>
+                    <a href={user ? "/order" : "/login"} onClick={()=>{window.sessionStorage.setItem("service","Web and Mobile Design")}}>
                         <Card className='p-2 header-card mb-3'>
                             <Card.Body>
                                 <VscDeviceMobile className='icons' />
@@ -38,7 +36,7 @@ export default function Services() {
                     </a>
                 </Col>
                 <Col lg={3} md={3} sm={3} xs={3} className='text-center'>
-                    <a href={user ? "/order" : serverURL + "/auth/google/callback"} onClick={()=>{window.sessionStorage.setItem("service","Graphics Design")}}>
+                    <a href={user ? "/order" : "/login"} onClick={()=>{window.sessionStorage.setItem("service","Graphics Design")}}>
                         <Card className='p-2 header-card mb-3'>
                             <Card.Body>
                                 <SiAltiumdesigner className='icons' />
@@ -50,7 +48,7 @@ export default function Services() {
                     </a>
                 </Col>
                 <Col lg={3} md={3} sm={3} xs={3} className='text-center'>
-                    <a href={user ? "/order" : serverURL + "/auth/google/callback"} onClick={()=>{window.sessionStorage.setItem("service","Logo Design")}}>
+                    <a href={user ? "/order" : "/login"} onClick={()=>{window.sessionStorage.setItem("service","Logo Design")}}>
                         <Card className='p-2 header-card mb-3'>
                             <Card.Body>
                                 <SiWappalyzer className='icons' />

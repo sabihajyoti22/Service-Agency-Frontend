@@ -81,6 +81,7 @@ legend{
 }
 .header-card{
     transition: all 0.3s;
+    cursor: pointer;
 }
 .header-card:hover{
     background-color: deepskyblue;

@@ -13,7 +13,7 @@ import Contact from './Contact';
 import Services from './Services';
 
 
-export default function Home({ getUser }) {
+export default function Home() {
   const clientId = "698820746917-20a7v821hrgme8ctdl80jrf8g0qobv2d.apps.googleusercontent.com";
   const [user, setUser] = useState(null)
   const [showloginButton, setShowloginButton] = useState(true);
@@ -24,8 +24,8 @@ export default function Home({ getUser }) {
       gapi.auth2.init({ clientId: clientId })
     })
   }, [])
-  
-  getUser(user)
+
+  user ? window.localStorage.setItem("user",JSON.stringify(user)) : window.localStorage.removeItem("user")
 
   const onLoginSuccess = (res) => {
     // console.log('Login Success:', res.profileObj);
@@ -39,10 +39,11 @@ export default function Home({ getUser }) {
   };
 
   const onSignoutSuccess = () => {
-    console.clear();
-    setUser()
+    // console.clear();
+    setUser(null);
     setShowloginButton(true);
     setShowlogoutButton(false);
+    window.location.reload()
   };
 
   return (

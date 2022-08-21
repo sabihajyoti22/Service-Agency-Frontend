@@ -1,11 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-// import { Nav, Navbar, Container, Row, Col, Button, Image } from 'react-bootstrap'
-// import { GiRobberHand } from 'react-icons/gi';
-// import { FiPhoneCall } from 'react-icons/fi';
-// import { TbCurrentLocation } from 'react-icons/tb';
-// import { GoogleLogin, GoogleLogout } from "react-google-login"
-// import { gapi } from "gapi-script"
 
 import "./style.css"
 
@@ -16,12 +10,13 @@ import Review from "./Component/Client/Review";
 import AddService from "./Component/Admin/AddService";
 import OrderList from "./Component/Admin/OrderList";
 import AdminServiceList from "./Component/Admin/AdminServiceList";
+import Login from "./Component/Login";
 
 import { UserContext } from "./UserContext"
 
 function App() {
   const serverURL = "https://sab-server.herokuapp.com"
-  const [user,setUser] = useState(null)
+  const user = window.localStorage.getItem("user") ? JSON.parse(window.localStorage.getItem("user")) : null
   const [selectToEdit, setSelectToEdit] = useState({
     id: "",
     serviceName: "",
@@ -38,19 +33,13 @@ function App() {
     }
   }
 
-  const onGetUser = (data)=>{
-    setUser(data)
-    // console.log(user)
-  }
-  
 
   return (
     <>
-      {/* {error && <h1>{error}</h1>} */}
       <UserContext.Provider value={{ user, serverURL }}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home getUser={onGetUser}/>} />
+            <Route path="/" element={<Home />} />
 
             <Route path="/order" element={<Order />} />
 
@@ -63,6 +52,8 @@ function App() {
             <Route path="/admin/adminserviceList" element={<AdminServiceList onSendEditData={onGetEditData} />} />
 
             <Route path="/admin/orderList" element={<OrderList />} />
+
+            <Route path="/login" element={<Login />} />
 
             <Route path="*" element={<h1>Page Not Found</h1>} />
           </Routes>
