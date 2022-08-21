@@ -15,7 +15,7 @@ import Login from "./Component/Login";
 import { UserContext } from "./UserContext"
 
 function App() {
-  const serverURL = "https://sab-server.herokuapp.com"
+  const serverURL = process.env.REACT_APP_SERVER_URL
   const user = window.localStorage.getItem("user") ? JSON.parse(window.localStorage.getItem("user")) : null
   const [selectToEdit, setSelectToEdit] = useState({
     id: "",
