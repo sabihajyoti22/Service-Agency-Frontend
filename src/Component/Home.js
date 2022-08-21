@@ -95,7 +95,7 @@ export default function Home() {
                     {!user && <div ref={googlebuttonref}></div>}
                     {user && (
                       <div>
-                        <button onClick={() => {
+                        <button className='button-nav' onClick={() => {
                           setuser(null)
                           window.localStorage.removeItem("user")
                           // window.location.reload()
@@ -106,29 +106,6 @@ export default function Home() {
                       </div>
                     )}
                   </div>
-                  {/* {showloginButton ?
-                      <GoogleLogin
-                        clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
-                        buttonText='Login'
-                        onSuccess={onLoginSuccess}
-                        onFailure={onLoginFailure}
-                        cookiePolicy={'single_host_origin'}
-                        isSignedIn={true}
-                      />
-                      : null}
-                    {showlogoutButton ?
-                      <>
-                        <GoogleLogout
-                          clientId={clientId}
-                          buttonText="Logout"
-                          onLogoutSuccess={onSignoutSuccess}
-                        >
-                        </GoogleLogout>
-                        <Image src={user.imageUrl} alt={user.name} height="40px" width="40px" className='rounded-circle ms-3' />
-                      </>
-                      : null
-                    } */}
-                  <div id="signin"></div>
                 </Navbar.Text>
               </Navbar.Collapse>
             </Container>
