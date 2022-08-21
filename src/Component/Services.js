@@ -12,7 +12,8 @@ export default function Services() {
         <>
             <Row>
                 <Col lg={3} md={3} sm={3} xs={3} className='text-center'>
-                    <a href={user ? "/order" : "/login"} onClick={()=>{window.sessionStorage.setItem("service","Web Development")}}>
+                    <a href={user ? "/order" : "/login"} onClick={()=>{
+                        window.sessionStorage.setItem("service","Web Development")}}>
                         <Card className='p-2 header-card mb-3'>
                             <Card.Body>
                                 <SiWeb3Dotjs className='icons' />
