@@ -10,7 +10,7 @@ import Review from "./Component/Client/Review";
 import AddService from "./Component/Admin/AddService";
 import OrderList from "./Component/Admin/OrderList";
 import AdminServiceList from "./Component/Admin/AdminServiceList";
-import Login from "./Component/Login";
+// import Login from "./Component/Login";
 
 import { UserContext } from "./UserContext"
 
@@ -53,7 +53,7 @@ function App() {
 
             <Route path="/admin/orderList" element={<OrderList />} />
 
-            <Route path="/login" element={<Login />} />
+            {/* <Route path="/login" element={<Login />} /> */}
 
             <Route path="*" element={<h1>Page Not Found</h1>} />
           </Routes>
