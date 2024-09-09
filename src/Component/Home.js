@@ -47,8 +47,8 @@ export default function Home() {
               <Navbar.Brand href="#home" className='text-white'><GiRobberHand className='fs-1' /><span className='text-brand ms-3'>Service Agency</span></Navbar.Brand>
               <Navbar.Toggle />
               <Navbar.Collapse className="justify-content-end">
-                <Navbar.Text className='text-white'>
-                  <Row>
+                <Navbar.Text className='text-white d-none d-lg-block'>
+                  <Row className=''>
                     <Col>
                       <Row>
                         <Col lg={2}>
@@ -80,7 +80,7 @@ export default function Home() {
           <Navbar expand="lg">
             <Container>
               <Navbar.Brand href="#home"></Navbar.Brand>
-              <Navbar.Toggle aria-controls="basic-navbar-nav" className='text-white' />
+              <Navbar.Toggle aria-controls="basic-navbar-nav" className='toggle-nav' />
               <Navbar.Collapse id="basic-navbar-nav" className='text-white'>
                 <Nav className="me-auto">
                   <Nav.Link href="#home" className='text-white me-5 pe-5 border-nav'>Home</Nav.Link>

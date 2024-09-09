@@ -5,9 +5,9 @@ export default function Work() {
     return (
         <>
             <div id='work' className='work container-fluid'>
-                <div className='container px-5'>
+                <div className='container px-lg-5'>
                     <h1 className='text-center text-white pt-5'>Here are Some of <span>Our Work</span></h1>
-                    <Carousel className='p-5'>
+                    <Carousel className='p-1 p-lg-5'>
                         <Carousel.Item interval={1000}>
                             <img
                                 className="d-block w-100"
