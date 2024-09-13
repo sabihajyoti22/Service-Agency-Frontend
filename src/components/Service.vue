@@ -42,14 +42,14 @@
 
       <div
         v-if="count"
-        class="cursor-pointer absolute top-1/2 -left-2 w-auto mt-[-22px] py-2 px-4 text-navy font-bold text-lg rounded-full border bg-white shadow-md"
+        class="hidden md:block cursor-pointer absolute top-1/2 -left-2 w-auto mt-[-22px] py-2 px-4 text-navy font-bold text-lg rounded-full border bg-white shadow-md"
         @click="sildePrev"
       >
         &#10094;
       </div>
       <div
         v-if="count !== (services.length - 4) && services.length >= 4"
-        class="cursor-pointer absolute top-1/2 -right-2 w-auto mt-[-22px] py-2 px-4 text-navy font-bold text-lg rounded-full border bg-white shadow-md"
+        class="hidden md:block cursor-pointer absolute top-1/2 -right-2 w-auto mt-[-22px] py-2 px-4 text-navy font-bold text-lg rounded-full border bg-white shadow-md"
         @click="slideNext"
       >
         &#10095;

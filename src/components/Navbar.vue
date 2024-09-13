@@ -80,11 +80,13 @@
         :class="toggle ? 'translate-x-0' : 'translate-x-full'"
       >
         <div class="flex flex-col md:flex-row gap-5 md:gap-2 grow">
-          <a
-            href="/"
+          <routerLink
+            to="/"
             class="w-[95%] md:w-fit px-3 border-r-2 border-white transition duration-300 hover:bg-[#191970cc] hover:scale-110 hover:cursor-pointer"
             @click="toggle = false"
-          >Home</a>
+          >
+            Home
+          </routerLink>
           <a
             href="/#service"
             class="w-[95%] md:w-fit px-3 border-r-2 border-white transition duration-300 hover:bg-[#191970cc] hover:scale-110 hover:cursor-pointer"
