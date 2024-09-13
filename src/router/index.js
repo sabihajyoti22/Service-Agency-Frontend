@@ -25,7 +25,8 @@ router.beforeEach((to, from, next) => {
                 if(user){
                     useAuthStore().setProfile({
                         username: user.username,
-                        useremail: user.useremail
+                        useremail: user.useremail,
+                        role: user.useremail === 'admin@gmail.com' ? 'admin' : 'user'
                     })
                     return next()
                 }else {
