@@ -82,7 +82,13 @@
       giveReview(){
         this.$axios.post('/reviews', this.review)
           .then((res) => {
-            console.log(res)
+            this.review = {
+              clientName: "",
+              clientEmail: "",
+              serviceName: "",
+              serviceProvider: "",
+              comment: "",
+            }
           })
       }
     }  

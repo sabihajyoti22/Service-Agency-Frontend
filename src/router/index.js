@@ -15,28 +15,37 @@ const router = createRouter({
     }
 })
 
-router.beforeEach(async (to, from, next) => {
-    // if(!useAuthStore().getProfile){
-    //     let user = JSON.parse(window.localStorage.getItem('id'))
-    //     if(user){
-    //         axios.get(`${import.meta.env.VITE_APP_SERVER_URL}/user/${user}`)
-    //         .then((res) => {
-    //             user = JSON.parse(JSON.stringify(res.data))
-    //             if(user){
-    //                 useAuthStore().setProfile({
-    //                     username: user.username,
-    //                     useremail: user.useremail
-    //                 })
-    //             }else {
-    //                 next({name: 'auth'})
-    //             }
-    //         })
-    //     }else{
-    //         return next({name: 'auth'})
-    //     }
-    // }else {
-    // }
-    return next()
+router.beforeEach((to, from, next) => {
+    if(useAuthStore().getProfile === null){
+        let user = JSON.parse(window.localStorage.getItem('id'))
+        if(user){
+            axios.get(`${import.meta.env.VITE_APP_SERVER_URL}/user/${user}`)
+                .then((res) => {
+                user = JSON.parse(JSON.stringify(res.data))
+                if(user){
+                    useAuthStore().setProfile({
+                        username: user.username,
+                        useremail: user.useremail
+                    })
+                    return next()
+                }else {
+                    if(to.name === 'auth' || to.name === 'home'){
+                        return next()
+                    }else{
+                        return next({name: 'auth'})  
+                    }
+                }
+            })
+        }else {
+            if(to.name === 'auth' || to.name === 'home'){
+                return next()
+            }else{
+                return next({name: 'auth'})  
+            }
+        }
+    }else {
+        return next()
+    }
 })
 
 

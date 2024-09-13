@@ -82,7 +82,13 @@
       placeOrder(){
         this.$axios.post('/orders', this.order)
           .then((res) => {
-            console.log(res)
+            this.order = {
+              username: "",
+              useremail: "",
+              service: '',
+              projectDesc: "",
+              price: "",
+            }
           })
       }
     }

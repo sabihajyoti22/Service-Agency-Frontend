@@ -8,7 +8,7 @@
       </div>
 
       <router-link
-        :to="{name: 'serviceList'}"
+        :to="{name: 'AserviceList'}"
         class="hover:underline"
       >
         Service List

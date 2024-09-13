@@ -17,7 +17,10 @@
           <div class="text-black/60 mb-4">
             {{ item.serviceDesc }}
           </div>
-          <div class="flex justify-center gap-3 mt-auto">
+          <router-link
+            to="/user/order"
+            class="flex justify-center gap-3 mt-auto"
+          >
             <div class="text-xs text-primary">
               Click here to order
             </div>
@@ -33,7 +36,7 @@
               fill="none"
               d="M0 0h24v24H0z"
             /><path d="M15.5 5H11l5 7-5 7h4.5l5-7z" /><path d="M8.5 5H4l5 7-5 7h4.5l5-7z" /></svg>
-          </div>
+          </router-link>
         </div>
       </div>
 
