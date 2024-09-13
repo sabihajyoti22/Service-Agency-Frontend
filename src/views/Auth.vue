@@ -216,12 +216,20 @@
         return !this.user.username || !this.user.useremail || !this.user.password
       }
     },
+    created(){
+      if(JSON.parse(window.localStorage.getItem('email'))){
+        this.rememberMe = true
+        this.user.useremail = JSON.parse(window.localStorage.getItem('email'))
+      }
+    },
     methods: {
       switchLayout(){
         if(this.layout === 1){
           this.layout = 2
+          this.user.useremail = ''
         }else{
           this.layout = 1
+          this.user.useremail = JSON.parse(window.localStorage.getItem('email'))
         }
       },
       signIn(){
@@ -232,14 +240,12 @@
             }else if(res.status === 204){
               this.error = "the user not found"
             }else{
-              
               if(res.data.useremail === this.admin.useremail){
                 useAuthStore().setProfile({
                   username: res.data.username,
                   useremail: res.data.useremail,
                   role: 'admin'
                 })
-                window.localStorage.setItem('id', JSON.stringify(res.data._id))
                 this.$router.push('/admin/AserviceList')
               }else{
                 useAuthStore().setProfile({
@@ -247,8 +253,13 @@
                   useremail: res.data.useremail,
                   role: 'user'
                 })
-                window.localStorage.setItem('id', JSON.stringify(res.data._id))
                 this.$router.push('/user/serviceList')
+              }
+              window.localStorage.setItem('id', JSON.stringify(res.data._id))
+              if(this.rememberMe){
+                window.localStorage.setItem('email', JSON.stringify(res.data.useremail))
+              }else{
+                window.localStorage.removeItem('email')
               }
             }
           })
