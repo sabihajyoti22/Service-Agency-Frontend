@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Audiowide";
+    src: url("../fonts/Audiowide-Regular.ttf");
+}
+
+@layer components {
+    .default-layout {
+        @apply w-full md:max-w-[1200px] px-2 md:mx-auto
+    }
+
+    .overlay {
+      @apply fixed inset-0 z-50 bg-black bg-opacity-60 flex justify-center items-center
+  }
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #D1D5DB;
+    border-radius: 100vh;
+    border: 6px solid #D1D5DB;
+}
+
+:root{
+    scroll-behavior: smooth;
+}
+
+.loader {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: block;
+    margin:15px auto;
+    position: relative;
+    background: #FFF;
+    box-shadow: -24px 0 #FFF, 24px 0 #FFF;
+    box-sizing: border-box;
+    animation: shadowPulse 2s linear infinite;
+  }
+  
+  @keyframes shadowPulse {
+    33% {
+      background: #FFF;
+      box-shadow: -24px 0 #3b82f6, 24px 0 #FFF;
+    }
+    66% {
+      background: #3b82f6;
+      box-shadow: -24px 0 #FFF, 24px 0 #FFF;
+    }
+    100% {
+      background: #FFF;
+      box-shadow: -24px 0 #FFF, 24px 0 #3b82f6;
+    }
+  }
