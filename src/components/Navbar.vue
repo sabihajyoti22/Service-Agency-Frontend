@@ -112,6 +112,14 @@
             class="w-[95%] md:w-fit px-3 border-r-2 border-white transition duration-300 hover:bg-[#191970cc] hover:scale-110 hover:cursor-pointer"
             @click="toggle = false"
           >Contact</a>
+
+          <router-link
+            v-if="getAuthUser"
+            :to="getAuthUser?.role === 'admin' ? '/admin/AserviceList' : '/user/serviceList'"
+            class="w-[95%] md:w-fit px-3 border-r-2 border-white transition duration-300 hover:bg-[#191970cc] hover:scale-110 hover:cursor-pointer"
+          >
+            {{ getAuthUser?.role === 'admin' ? 'Admin Panel' : 'User Panel' }}
+          </router-link>
         </div>
 
         <!-- <div :ref="googlebuttonref" /> -->
