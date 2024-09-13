@@ -6,7 +6,6 @@
     >
       <span class="loader" />
     </div>
-
     <div v-else>
       <div class="flex justify-between mb-5">
         <div
