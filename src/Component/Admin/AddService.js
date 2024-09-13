@@ -28,7 +28,7 @@ export default function AddService({ selectedService, btnText }) {
     }
 
     const createService = () => {
-        axios.post(serverURL + "/api/servics", services)
+        axios.post(serverURL + "/api/services", services)
             .then((res) => {
                 if (res.status === 201) {
                     console.log("Service Created")
@@ -43,7 +43,7 @@ export default function AddService({ selectedService, btnText }) {
     }
 
     const editService = () => {
-        axios.patch(serverURL + `/api/servics/${selectedService.id}`, services)
+        axios.patch(serverURL + `/api/services/${selectedService.id}`, services)
             .then((res) => {
                 // createService()
             })

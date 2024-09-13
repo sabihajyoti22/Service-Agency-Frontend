@@ -22,7 +22,7 @@ span {
 }
 
 fieldset {
-    border: 2px solid navy;
+    border: 2px solid #000080;
     padding: 15px;
     border-radius: 10px;
 }

@@ -15,10 +15,10 @@ export default function AdminServiceList({ onSendEditData }) {
     const [services, setServices] = useState([])
 
     const [error, setError] = useState("")
-    const [isLoading, setIsLoading] = useState(false) 
+    const [isLoading, setIsLoading] = useState(false)
 
     const getService = () => {
-        axios.get(serverURL + "/api/servics")
+        axios.get(serverURL + "/api/services")
             .then((res) => {
                 setIsLoading(true)
                 setServices(res.data)
@@ -29,8 +29,8 @@ export default function AdminServiceList({ onSendEditData }) {
     }
 
     const handleEdit = (id) => {
-        const selectedService = services.filter((service)=> service._id === id)
-        onSendEditData(selectedService)  
+        const selectedService = services.filter((service) => service._id === id)
+        onSendEditData(selectedService)
     }
 
     useEffect(() => {
@@ -41,7 +41,7 @@ export default function AdminServiceList({ onSendEditData }) {
         <>
             {error && <h1>{error}</h1>}
             <Container fluid className='p-0 m-0 common-back'>
-            <Header title="Service List"/>
+                <Header title="Service List" />
 
                 <Row className="me-0">
                     <Col lg={3} md={12}>
@@ -54,7 +54,7 @@ export default function AdminServiceList({ onSendEditData }) {
                                 return <Col key={_id} lg={4}>
                                     <Card className='service-card p-2 header-card mb-3'>
                                         <Link to="/admin/addService">
-                                            <BiEditAlt className='fs-3 service-card-del' onClick={()=>{handleEdit(_id)}}/>
+                                            <BiEditAlt className='fs-3 service-card-del' onClick={() => { handleEdit(_id) }} />
                                         </Link>
                                         <Card.Body className='text-center'>
                                             <AiOutlineCloudServer className='icons' />

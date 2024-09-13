@@ -15,7 +15,7 @@ export default function ServiceList() {
     const [isLoading, setIsLoading] = useState(false)
 
     const getService = () => {
-        axios.get(serverURL + "/api/servics")
+        axios.get(serverURL + "/api/services")
             .then((res) => {
                 setIsLoading(true)
                 setServices(res.data)
@@ -41,9 +41,9 @@ export default function ServiceList() {
                     </Col>
                     <Col lg={9} md={12} className="mt-5">
                         <Row className='container-fluid'>
-                            {isLoading && services.map((service)=>{
+                            {isLoading && services.map((service) => {
                                 return <Col key={service._id} lg={4}>
-                                    <ServiceCard  services={service}/>
+                                    <ServiceCard services={service} />
                                 </Col>
                             })}
                         </Row>
