@@ -158,17 +158,6 @@
 <script>
   import { ref } from 'vue';
   import { useAuthStore } from '../store/module/auth.js';
-  import { useScript } from '../utlis/googleAuth.js';
-  import { jwtDecode } from 'jwt-decode';
-
-  const onGoogleSignIn = (user) => {
-    let userCred = user.credential;
-    let payload = jwtDecode(userCred);
-    window.localStorage.setItem("user", JSON.stringify(payload))
-    window.location.reload()
-  };
-
-  const googlebuttonref = ref()
 
   export default {
     data() {
@@ -179,27 +168,6 @@
     computed: {
       getAuthUser(){
         return useAuthStore().getProfile
-      }
-    },
-    mounted(){
-      // useScript("https://accounts.google.com/gsi/client", () => {
-      //   window.google.accounts.id.initialize({
-      //     client_id: import.meta.env.VITE_APP_CLIENT_ID,
-      //     callback: onGoogleSignIn,
-      //     auto_select: false,
-      //   });
-
-      //   window.google.accounts.id.renderButton(googlebuttonref.value.current, {
-      //     size: "medium",
-      //   });
-      // })
-    },
-    methods: {
-      logout(){
-        this.toggle = false
-        useAuthStore().setProfile(null)
-        this.$router.push({name: 'auth'})
-        window.localStorage.removeItem('id')
       }
     }
   }

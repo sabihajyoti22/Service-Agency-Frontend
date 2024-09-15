@@ -98,13 +98,15 @@
           Sign in
         </button>
 
-        <div class="text-center my-3">
+        <!-- <div class="text-center my-3">
           Or
         </div>
 
-        <button class="w-full rounded p-1 text-center text-white bg-primary">
-          Google Sign in
-        </button>
+        <div class="flex justify-center items-center w-full">
+          <button
+            ref="googleAuth"
+          />
+        </div> -->
       </form>
 
       <!-- Sign Up -->
@@ -182,13 +184,21 @@
     </fieldset>
 
     <div class="md:w-[450px] mx-3 md:mx-0 bg-amber-400 text-white p-1 rounded-md">
-      For Admin SignIn email: 'admin@gmail.com' password: 'secret'
+      For Admin Sign In email: 'admin@gmail.com' password: 'secret'
     </div>
   </div>
 </template>
 
 <script>
   import { useAuthStore } from '../store/module/auth'
+  import { useScript } from '../utlis/googleAuth.js';
+  import { jwtDecode } from 'jwt-decode';
+
+  const onGoogleSignIn = (user) => {
+    // let userCred = user.credential;
+    // let payload = jwtDecode(userCred);
+    console.log(user)
+  };
 
   export default {
     data() {
@@ -221,6 +231,20 @@
         this.rememberMe = true
         this.user.useremail = JSON.parse(window.localStorage.getItem('email'))
       }
+    },
+    mounted(){
+      useScript("https://accounts.google.com/gsi/client", () => {
+        window.google.accounts.id.initialize({
+          client_id: import.meta.env.VITE_APP_CLIENT_ID,
+          callback: onGoogleSignIn,
+          auto_select: false,
+        })
+
+        window.google.accounts.id.renderButton(this.$refs.googleAuth, {
+          size: 'large',
+          theme: 'filled_blue'
+        })
+      })
     },
     methods: {
       switchLayout(){
@@ -274,6 +298,12 @@
             }
             this.layout = 1
           })
+      },
+      logout(){
+        this.toggle = false
+        useAuthStore().setProfile(null)
+        this.$router.push({name: 'auth'})
+        window.localStorage.removeItem('id')
       }
     }
   }
