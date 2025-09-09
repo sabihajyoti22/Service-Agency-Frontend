@@ -169,6 +169,13 @@
       getAuthUser(){
         return useAuthStore().getProfile
       }
-    }
+    },
+    methods: {
+      logout(){
+        window.location.reload();
+        useAuthStore().setProfile(null)
+        window.localStorage.clear()
+      }
+    },
   }
 </script>
